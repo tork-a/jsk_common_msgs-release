@@ -1,3 +1,4 @@
+!!python/unicode 'release_repo_url': git@github.com:tork-a/jsk_common_msgs-release
 tracks:
   hydro:
     actions:
