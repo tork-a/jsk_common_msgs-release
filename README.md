@@ -1,3 +1,32 @@
+## jsk_common_msgs (kinetic) - 2.0.1-0
+
+The packages in the `jsk_common_msgs` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release jsk_common_msgs -r kinetic --track kinetic` on `Thu, 24 Mar 2016 03:07:58 -0000`
+
+These packages were released:
+- `jsk_common_msgs`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `posedetection_msgs`
+- `speech_recognition_msgs`
+
+Version of package(s) in repository `jsk_common_msgs`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common_msgs
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `2.0.1-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.21`
+- catkin_pkg version: `0.2.10`
+- rosdep version: `0.11.4`
+- rosdistro version: `0.4.4`
+- vcstools version: `0.1.38`
+
+
 ## jsk_common_msgs (jade) - 2.0.1-0
 
 The packages in the `jsk_common_msgs` repository were released into the `jade` distro by running `/var/lib/jenkins/send_to_bloom.py jsk-ros-pkg jsk_common_msgs` on `Sun, 24 Jan 2016 05:53:50 -0000`
