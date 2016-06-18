@@ -1,0 +1,442 @@
+ros-jade-posedetection-msgs (3.0.0-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 17 Jun 2016 15:00:00 -0000
+
+ros-jade-posedetection-msgs (2.0.1-0vivid) vivid; urgency=high
+
+  * include/posedetection_msgs/feature0d_to_image.h: add cv.hpp
+  * CMakeLists.txt : remove posedetection_msgs depends on OpenCV; remove opencv from catkin_package, what provide opencv to catkin_LIBRARIES
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 20 Jan 2016 15:00:00 -0000
+
+ros-jade-posedetection-msgs (2.0.0-0vivid) vivid; urgency=high
+
+  * move from jsk_common to jsk_common_msgs
+  * [posedetection_msgs/package.xml] add message_filters to depends
+  * Contributors: Kei Okada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 18 Jun 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.72-0vivid) vivid; urgency=high
+
+  * [posedetection_msgs] Change local topic name -> global of feature0d_to_image
+  * [posedetection_msgs] Use draw_features func in Feature0DView
+  * [posedetection_msgs] Remove no need namespace declaration in Feature0DView
+  * [posedetection_msgs] Remove no need headers in Feature0DView
+  * [posedetection_msgs] Add header file for feature0d_view
+  * [posedetection_msgs] Add header file for feature0d_to_image
+  * [posedetection_msgs] Visualize Feature0D with Image
+  * Contributors: Kentaro Wada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 06 Jun 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.71-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 16 May 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.70-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 07 May 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.69-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.68-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 04 May 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.67-0vivid) vivid; urgency=high
+
+  * [posedetection_msgs] Add feature0d_to_image node
+  * Contributors: Kentaro Wada
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 02 May 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.66-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 02 Apr 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.65-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 01 Apr 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.64-0vivid) vivid; urgency=high
+
+  * [posedetection_msgs] Generate binary in lib directory as other catkin
+    packages do
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 28 Mar 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.63-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 18 Feb 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.62-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 16 Feb 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.61-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 10 Feb 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.60-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.59-0vivid) vivid; urgency=high
+
+  * Remove rosbuild files
+  * Contributors: Ryohei Ueda
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 02 Feb 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.58-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 06 Jan 2015 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.57-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 22 Dec 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.56-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 16 Dec 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.55-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 08 Dec 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.54-0vivid) vivid; urgency=high
+
+  * new srv and changed Object6DPose
+  * Contributors: Kamada Hitoshi
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 14 Nov 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.53-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 31 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.52-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 22 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.51-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.50-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 19 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.49-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 12 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.48-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 11 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.47-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 07 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.46-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 02 Oct 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.45-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 28 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.44-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.43-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 25 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.42-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 24 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.41-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 22 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.40-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 18 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.39-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 16 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.38-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 12 Sep 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.36-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 31 Aug 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.35-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 15 Aug 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.34-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 13 Aug 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.33-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 27 Jul 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.32-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 25 Jul 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.31-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 22 Jul 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.30-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 14 Jul 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.29-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 01 Jul 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.28-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 23 Jun 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.27-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 09 Jun 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.26-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 29 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.25-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sun, 25 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.24-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 23 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.23-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 22 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.22-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 21 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.21-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 19 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.20-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 08 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.19-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Mon, 05 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.18-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 03 May 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.17-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Sat, 19 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.16-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.15-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.14-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.13-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 18 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.12-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.11-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 17 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.10-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 16 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.9-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Fri, 11 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.8-0vivid) vivid; urgency=high
+
+
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Thu, 10 Apr 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.4-0vivid) vivid; urgency=high
+
+  * posedetection_msgs: add message_generation to package.xml
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Wed, 26 Mar 2014 15:00:00 -0000
+
+ros-jade-posedetection-msgs (1.0.0-0vivid) vivid; urgency=high
+
+  * set all package to 1.0.0
+  * use USE_ROSBUILD for catkin/rosbuild environment
+  * remove debug code
+  * use ROS_Distributions instead of ROS_DISTRO for electric
+  * comment out : add catkin.cmake
+  * add depends to roscpp
+  * update to opencv2
+  * move depend opencv2 to jsk_common since posedetection_msgs is under jsk_common stack
+  * add rosdep2 for electric, will fixed in opencv2.4. https://code.ros.org/trac/ros-pkg/ticket/5437
+  * use rosdep opencv2 and pkg-config, as described in the wiki http://www.ros.org/wiki/opencv2
+  * moved posedetection_msgs, sift processing, and other packages to jsk_common and jsk_perception
+  * Contributors: Kei Okada, rosen
+
+ -- Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>  Tue, 04 Mar 2014 15:00:00 -0000
+
+
