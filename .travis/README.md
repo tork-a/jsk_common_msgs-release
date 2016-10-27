@@ -3,7 +3,7 @@
 [![Join the chat at https://gitter.im/jsk-ros-pkg/jsk_travis](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jsk-ros-pkg/jsk_travis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/jsk-ros-pkg/jsk_travis.svg?branch=master)](https://travis-ci.org/jsk-ros-pkg/jsk_travis)
 
-![](jsk_travis_diagram.png)
+![](_media/jsk_travis_diagram.png)
 
 - How to update docker image on jenkins
 ```
@@ -17,7 +17,8 @@ echo -e "FROM ros-ubuntu:14.04\nRUN apt-get update\nRUN apt-get -y upgrade\nEXPO
 
 jsk_travis is a package to test ROS repositories on travis and jenkins.
 In order to test on hydro, it uses travis and on indigo and jade, it uses jenkins by default.
-Use `USE_TRAVIS` and `USE_JENKINS` to configure them manually.
+On travis, docker can be enabled to test multiple distribution.
+Use `USE_DOCKER`, `USE_TRAVIS` and `USE_JENKINS` to configure them manually.
 The jenkins server is available on [jenkins.jsk.imi.i.u-tokyo.ac.jp](https://jenkins.jsk.imi.i.u-tokyo.ac.jp:8080).
 
 
@@ -31,6 +32,8 @@ git submodule add https://github.com/jsk-ros-pkg/jsk_travis.git .travis
 And each project needs to setup .travis.yml for the travis.
 [jsk_common's .travis.yml](https://github.com/jsk-ros-pkg/jsk_common/blob/master/.travis.yml) is a good example to setup
 .travis.yml.
+
+Note that jsk\_travis only supports being upgraded and PRs that downgrades jsk\_travis result in test fails.
 
 
 ## Restarting tests
@@ -66,6 +69,10 @@ see [this document](https://github.com/jsk-ros-pkg/jsk_common#restart-travis-fro
   and then installs left dependencies by apt.
   If `source`, travis does not sees [config files](#config-files) but runs `setup_upstream.sh` file.
   See [here](https://github.com/jsk-ros-pkg/jsk_roseus) for example.
+  
+* `USE_DOCKER` (default: `false`)
+
+  Force to use docker on travis.
 
 * `USE_JENKINS` (default: `false`)
 
@@ -83,6 +90,16 @@ see [this document](https://github.com/jsk-ros-pkg/jsk_common#restart-travis-fro
 * `CATKIN_PARALLEL_TEST_JOBS` (default: `-p4`)
 
   The number of catkin parallel processes in test.
+
+* `CATKIN_TOOLS_BUILD_OPTIONS`
+  (default: `-iv --summarize --no-status` for `catkin-tools==0.3.X`
+   and `--summarize --no-status` for `catkin-tools` of other version.)
+
+  Options to be passed like `catkin build $CATKIN_TOOLS_BUILD_OPTIONS`.
+
+* `CATKIN_TOOLS_CONFIG_OPTIONS` (default: none)
+
+  Options to be passed like `catkin config $CATKIN_TOOLS_CONFIG_OPTIONS`.
 
 * `ROS_PARALLEL_TEST_JOBS` (default: `-j8`)
 
