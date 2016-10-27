@@ -8,6 +8,7 @@ import urllib2
 import json
 import time
 import os
+import re
 import sys
 
 from os import environ as env
@@ -22,8 +23,6 @@ CONFIGURE_XML = '''<?xml version='1.0' encoding='UTF-8'?>
      &lt;/h4&gt;
      Parameters are&lt;br&gt;
        ROS_DISTRO = %(ROS_DISTRO)s&lt;br&gt;
-       ROSWS      = %(ROSWS)s&lt;br&gt;
-       BUILDIER   = %(BUILDER)s&lt;br&gt;
        USE_DEB    = %(USE_DEB)s&lt;br&gt;
        EXTRA_DEB  = %(EXTRA_DEB)s&lt;br&gt;
        TARGET_PKGS = %(TARGET_PKGS)s&lt;br&gt;
@@ -32,6 +31,8 @@ CONFIGURE_XML = '''<?xml version='1.0' encoding='UTF-8'?>
        NOT_TEST_INSTALL = %(NOT_TEST_INSTALL)s&lt;br&gt;
        ROS_PARALLEL_JOBS = %(ROS_PARALLEL_JOBS)s&lt;br&gt;
        CATKIN_PARALLEL_JOBS = %(CATKIN_PARALLEL_JOBS)s&lt;br&gt;
+       CATKIN_TOOLS_BUILD_OPTIONS = %(CATKIN_TOOLS_BUILD_OPTIONS)s&lt;br&gt;
+       CATKIN_TOOLS_CONFIG_OPTIONS = %(CATKIN_TOOLS_CONFIG_OPTIONS)s&lt;br&gt;
        ROS_PARALLEL_TEST_JOBS = %(ROS_PARALLEL_TEST_JOBS)s&lt;br&gt;
        CATKIN_PARALLEL_TEST_JOBS = %(CATKIN_PARALLEL_TEST_JOBS)s&lt;br&gt;
        BUILDING_PKG = %(BUILD_PKGS)s&lt;br&gt;
@@ -43,7 +44,7 @@ CONFIGURE_XML = '''<?xml version='1.0' encoding='UTF-8'?>
     <jenkins.model.BuildDiscarderProperty>
       <strategy class="hudson.tasks.LogRotator">
         <daysToKeep>3</daysToKeep>
-        <numToKeep>3</numToKeep>
+        <numToKeep>%(NUMBER_OF_LOGS_TO_KEEP)s</numToKeep>
         <artifactDaysToKeep>-1</artifactDaysToKeep>
         <artifactNumToKeep>-1</artifactNumToKeep>
       </strategy>
@@ -95,7 +96,7 @@ cd ${BUILD_TAG}/%(TRAVIS_REPO_SLUG)s
 #git fetch -q origin '+refs/pull/*:refs/remotes/pull/*'
 #git checkout -qf %(TRAVIS_COMMIT)s || git checkout -qf pull/${TRAVIS_PULL_REQUEST}/head
 if [ "${TRAVIS_PULL_REQUEST}" != "false" ]; then
- git fetch origin +refs/pull/${TRAVIS_PULL_REQUEST}/merge
+ git fetch -q origin +refs/pull/${TRAVIS_PULL_REQUEST}/merge
  git checkout -qf FETCH_HEAD
 else
  git checkout -qf ${TRAVIS_COMMIT}
@@ -104,18 +105,25 @@ fi
 git submodule init
 git submodule update
 
+if [ "%(REPOSITORY_NAME)s" = "jsk_travis" ]; then
+  mkdir .travis; cp -r * .travis # need to copy, since directory starting from . is ignoreed by catkin build
+fi
+
 # remove containers created/exited more than 48 hours ago
-for container in `sudo docker ps -a | egrep '^.*days ago' | awk '{print $1}'`; do
+timeout 10s sudo docker ps -a > /tmp/$$.docker_ps_a.txt || exit 1  # check docker isn't held up
+for container in `cat /tmp/$$.docker_ps_a.txt | egrep '^.*days ago' | awk '{print $1}'`; do
      sudo docker rm $container || echo ok
 done
+rm -f /tmp/$$.docker_ps_a.txt
+
+# run watchdog for kill orphan docker container
+.travis/travis_watchdog.py %(DOCKER_CONTAINER_NAME)s --sudo &amp;
 
 sudo docker stop %(DOCKER_CONTAINER_NAME)s || echo "docker stop %(DOCKER_CONTAINER_NAME)s ends with $?"
 sudo docker rm %(DOCKER_CONTAINER_NAME)s || echo  "docker rm %(DOCKER_CONTAINER_NAME)s ends with $?"
 sudo docker run %(DOCKER_RUN_OPTION)s -t \\
     --name %(DOCKER_CONTAINER_NAME)s \\
     -e ROS_DISTRO='%(ROS_DISTRO)s' \\
-    -e ROSWS='%(ROSWS)s' \\
-    -e BUILDER='%(BUILDER)s' \\
     -e USE_DEB='%(USE_DEB)s' \\
     -e TRAVIS_REPO_SLUG='%(TRAVIS_REPO_SLUG)s' \\
     -e EXTRA_DEB='%(EXTRA_DEB)s' \\
@@ -125,6 +133,8 @@ sudo docker run %(DOCKER_RUN_OPTION)s -t \\
     -e NOT_TEST_INSTALL='%(NOT_TEST_INSTALL)s' \\
     -e ROS_PARALLEL_JOBS='%(ROS_PARALLEL_JOBS)s' \\
     -e CATKIN_PARALLEL_JOBS='%(CATKIN_PARALLEL_JOBS)s' \\
+    -e CATKIN_TOOLS_BUILD_OPTIONS='%(CATKIN_TOOLS_BUILD_OPTIONS)s' \\
+    -e CATKIN_TOOLS_CONFIG_OPTIONS='%(CATKIN_TOOLS_CONFIG_OPTIONS)s' \\
     -e ROS_PARALLEL_TEST_JOBS='%(ROS_PARALLEL_TEST_JOBS)s' \\
     -e CATKIN_PARALLEL_TEST_JOBS='%(CATKIN_PARALLEL_TEST_JOBS)s' \\
     -e BUILD_PKGS='%(BUILD_PKGS)s' \\
@@ -134,7 +144,9 @@ sudo docker run %(DOCKER_RUN_OPTION)s -t \\
     -v $WORKSPACE/${BUILD_TAG}:/workspace \\
     -v /export/data1/ccache:/workspace/.ccache \\
     -v /export/data1/pip-cache:/workspace/.cache/pip \\
+    -v /export/data1/ros_data:/workspace/.ros/data \\
     -v /export/data1/ros_test_data:/workspace/.ros/test_data \\
+    -v /tmp/.X11-unix:/tmp/.X11-unix:rw \\
     -w /workspace ros-ubuntu:%(LSB_RELEASE)s /bin/bash \\
     -c "$(cat &lt;&lt;EOL
 
@@ -160,6 +172,14 @@ export SHELL=/bin/bash
 # Reference: http://stackoverflow.com/questions/12689304/ctypes-error-libdc1394-error-failed-to-initialize-libdc1394
 sudo ln /dev/null /dev/raw1394
 
+# setup virtual display for GUI testing
+# based on http://wiki.ros.org/docker/Tutorials/GUI
+export QT_X11_NO_MITSHM=1
+export DISPLAY=:0
+apt-get install -qq -y mesa-utils
+glxinfo | grep GLX
+
+# start testing
 `cat .travis/travis.sh`
 
 EOL
@@ -219,16 +239,32 @@ def wait_for_finished(name, number):
     sleep = 30
     display = 300
     loop = 0
+    result = None
     while True :
+        now = time.time() * 1000
         try:
             info = j.get_build_info(name, number)
-            if info['building'] is False: return info['result']
+        except jenkins.NotFoundException, e:
+            print('ERROR: Jenkins job name={0}, number={1} in server={2}'
+                  'not found.'.format(name, number, j.server))
+            break
+        except jenkins.JenkinsException, e:
+            print('ERROR: Maybe Jenkins server is down. Please visit {0}'
+                  .format(j.server))
+            break
         except Exception, e:
-            print(e)
+            print('ERROR: Unexpected error: {0}'.format(e))
+            break
+        if not info['building']:
+            result = info['result']
+            break
+        # update progressbar
+        progress = (now - info['timestamp']) / info['estimatedDuration']
         if loop % (display/sleep) == 0:
-            print info['url'], "building..", info['building'], "result...", info['result']
+            print info['url'], "building: ", info['building'], "result: ", info['result'], "progress: ", progress
         time.sleep(sleep)
         loop += 1
+    return result
 
 def wait_for_building(name, number):
     global j
@@ -258,8 +294,6 @@ TRAVIS_BUILD_NUMBER = env.get('TRAVIS_BUILD_NUMBER')
 TRAVIS_JOB_ID = env.get('TRAVIS_JOB_ID')
 TRAVIS_JOB_NUMBER = env.get('TRAVIS_JOB_NUMBER')
 ROS_DISTRO = env.get('ROS_DISTRO', 'indigo')
-ROSWS = env.get('ROSWS', 'wstool')
-BUILDER = env.get('BUILDER', 'catkin')
 USE_DEB = env.get('USE_DEB', 'true')
 EXTRA_DEB = env.get('EXTRA_DEB', '')
 TEST_PKGS = env.get('TEST_PKGS', '')
@@ -268,12 +302,16 @@ BEFORE_SCRIPT = env.get('BEFORE_SCRIPT', '')
 NOT_TEST_INSTALL = env.get('NOT_TEST_INSTALL', '')
 ROS_PARALLEL_JOBS = env.get('ROS_PARALLEL_JOBS', '')
 CATKIN_PARALLEL_JOBS = env.get('CATKIN_PARALLEL_JOBS', '')
+CATKIN_TOOLS_BUILD_OPTIONS = env.get('CATKIN_TOOLS_BUILD_OPTIONS', '')
+CATKIN_TOOLS_CONFIG_OPTIONS = env.get('CATKIN_TOOLS_CONFIG_OPTIONS', '')
 ROS_PARALLEL_TEST_JOBS = env.get('ROS_PARALLEL_TEST_JOBS', '')
 CATKIN_PARALLEL_TEST_JOBS = env.get('CATKIN_PARALLEL_TEST_JOBS', '')
 BUILD_PKGS = env.get('BUILD_PKGS', '')
 ROS_REPOSITORY_PATH = env.get('ROS_REPOSITORY_PATH', '')
 DOCKER_CONTAINER_NAME = '_'.join([TRAVIS_REPO_SLUG.replace('/','.'), TRAVIS_JOB_NUMBER])
 DOCKER_RUN_OPTION = env.get('DOCKER_RUN_OPTION', '--rm')
+NUMBER_OF_LOGS_TO_KEEP = env.get('NUMBER_OF_LOGS_TO_KEEP', '3')
+REPOSITORY_NAME = env.get('REPOSITORY_NAME', '')
 
 print('''
 TRAVIS_BRANCH        = %(TRAVIS_BRANCH)s
@@ -286,8 +324,6 @@ TRAVIS_JOB_ID        = %(TRAVIS_JOB_ID)s
 TRAVIS_JOB_NUMBER    = %(TRAVIS_JOB_NUMBER)s
 TRAVIS_BRANCH        = %(TRAVIS_BRANCH)s
 ROS_DISTRO       = %(ROS_DISTRO)s
-ROSWS            = %(ROSWS)s
-BUILDER          = %(BUILDER)s
 USE_DEB          = %(USE_DEB)s
 EXTRA_DEB        = %(EXTRA_DEB)s
 TEST_PKGS        = %(TEST_PKGS)s
@@ -296,24 +332,33 @@ BEFORE_SCRIPT      = %(BEFORE_SCRIPT)s
 NOT_TEST_INSTALL = %(NOT_TEST_INSTALL)s
 ROS_PARALLEL_JOBS       = %(ROS_PARALLEL_JOBS)s
 CATKIN_PARALLEL_JOBS    = %(CATKIN_PARALLEL_JOBS)s
+CATKIN_TOOLS_BUILD_OPTIONS    = %(CATKIN_TOOLS_BUILD_OPTIONS)s
+CATKIN_TOOLS_CONFIG_OPTIONS    = %(CATKIN_TOOLS_CONFIG_OPTIONS)s
 ROS_PARALLEL_TEST_JOBS  = %(ROS_PARALLEL_TEST_JOBS)s
 CATKIN_PARALLEL_TEST_JOBS = %(CATKIN_PARALLEL_TEST_JOBS)s
 BUILD_PKGS       = %(BUILD_PKGS)s
 ROS_REPOSITORY_PATH = %(ROS_REPOSITORY_PATH)s
 DOCKER_CONTAINER_NAME   = %(DOCKER_CONTAINER_NAME)s
 DOCKER_RUN_OPTION = %(DOCKER_RUN_OPTION)s
+NUMBER_OF_LOGS_TO_KEEP = %(NUMBER_OF_LOGS_TO_KEEP)s
+REPOSITORY_NAME = %(REPOSITORY_NAME)s
 ''' % locals())
 
 if env.get('ROS_DISTRO') == 'hydro':
     LSB_RELEASE = '12.04'
+    UBUNTU_DISTRO = 'precise'
 elif env.get('ROS_DISTRO') == 'indigo':
     LSB_RELEASE = '14.04'
+    UBUNTU_DISTRO = 'trusty'
 elif env.get('ROS_DISTRO') == 'jade':
     LSB_RELEASE = '14.04'
+    UBUNTU_DISTRO = 'trusty'
 elif env.get('ROS_DISTRO') == 'kinetic':
     LSB_RELEASE = '16.04'
+    UBUNTU_DISTRO = 'xenial'
 else:
     LSB_RELEASE = '14.04'
+    UBUNTU_DISTRO = 'trusty'
 
 ### start here
 j = Jenkins('http://jenkins.jsk.imi.i.u-tokyo.ac.jp:8080/', 'k-okada', '22f8b1c4812dad817381a05f41bef16b')
@@ -329,7 +374,25 @@ if j.get_plugin_info('build-timeout'):
 else:
     print('you need to install build_timeout plugin')
 # set job_name
-job_name = '-'.join(filter(bool, ['trusty-travis',TRAVIS_REPO_SLUG, ROS_DISTRO, 'deb', USE_DEB, EXTRA_DEB, NOT_TEST_INSTALL, BUILD_PKGS])).replace('/','-').replace(' ','-')
+job_name = '-'.join(
+    filter(
+        bool,
+        [
+            UBUNTU_DISTRO,
+            'travis',
+            TRAVIS_REPO_SLUG,
+            ROS_DISTRO,
+            'deb',
+            USE_DEB,
+            EXTRA_DEB,
+            NOT_TEST_INSTALL,
+            BUILD_PKGS,
+            BEFORE_SCRIPT,
+            ROS_REPOSITORY_PATH,
+        ]
+    )
+)
+job_name = re.sub(r'[^0-9A-Za-z]+', '-', job_name)
 if j.job_exists(job_name) is None:
     j.create_job(job_name, jenkins.EMPTY_CONFIG_XML)
 
