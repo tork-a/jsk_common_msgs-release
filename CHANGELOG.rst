@@ -2,6 +2,9 @@
 Changelog for package jsk_gui_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.1.1 (2017-05-17)
+------------------
+
 4.1.0 (2016-10-27)
 ------------------
 * [jsk_gui_msgs/msg/SlackMessage.msg] Add msg for posting to slack (`#13 <https://github.com/jsk-ros-pkg/jsk_common_msgs/issues/13>`_ )
