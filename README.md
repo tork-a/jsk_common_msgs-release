@@ -1,3 +1,32 @@
+## jsk_common_msgs (jade) - 4.2.0-0
+
+The packages in the `jsk_common_msgs` repository were released into the `jade` distro by running `./send_to_bloom.py jsk-ros-pkg jsk_common_msgs` on `Wed, 28 Jun 2017 07:38:16 -0000`
+
+These packages were released:
+- `jsk_common_msgs`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `posedetection_msgs`
+- `speech_recognition_msgs`
+
+Version of package(s) in repository `jsk_common_msgs`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common_msgs
+- release repository: https://github.com/tork-a/jsk_common_msgs-release.git
+- rosdistro version: `4.1.1-0`
+- old version: `4.1.1-0`
+- new version: `4.2.0-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.26`
+- catkin_pkg version: `0.3.5`
+- rosdep version: `0.11.5`
+- rosdistro version: `0.6.2`
+- vcstools version: `0.1.39`
+
+
 ## jsk_common_msgs (indigo) - 4.2.0-0
 
 The packages in the `jsk_common_msgs` repository were released into the `indigo` distro by running `./send_to_bloom.py jsk-ros-pkg jsk_common_msgs` on `Wed, 28 Jun 2017 07:32:48 -0000`
