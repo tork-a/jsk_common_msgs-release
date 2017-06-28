@@ -1,0 +1,12 @@
+Source: ros-indigo-jsk-hark-msgs
+Section: misc
+Priority: extra
+Maintainer: Shohei Fujii <s-fujii@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-message-generation, ros-indigo-std-msgs
+Homepage: http://ros.org/wiki/jsk_hark_msgs
+Standards-Version: 3.9.2
+
+Package: ros-indigo-jsk-hark-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-message-runtime, ros-indigo-std-msgs
+Description: jsk_hark_msgs
