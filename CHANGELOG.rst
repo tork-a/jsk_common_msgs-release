@@ -2,6 +2,9 @@
 Changelog for package speech_recognition_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+4.3.0 (2017-07-15)
+------------------
+
 4.2.0 (2017-06-28)
 ------------------
 * [speech_recognition_msgs] add messages for grammar recognition `#17 <https://github.com/jsk-ros-pkg/jsk_common_msgs/pull/17>`_
