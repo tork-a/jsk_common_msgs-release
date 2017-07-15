@@ -1,0 +1,12 @@
+Source: ros-indigo-jsk-common-msgs
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin
+Homepage: http://ros.org/wiki/jsk_common_msgs
+Standards-Version: 3.9.2
+
+Package: ros-indigo-jsk-common-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-jsk-footstep-msgs, ros-indigo-jsk-gui-msgs, ros-indigo-jsk-hark-msgs, ros-indigo-posedetection-msgs, ros-indigo-speech-recognition-msgs
+Description: Metapackage that contains commonly used messages for jsk-ros-pkg
