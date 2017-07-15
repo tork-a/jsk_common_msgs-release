@@ -1,0 +1,12 @@
+Source: ros-indigo-posedetection-msgs
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-cv-bridge, ros-indigo-geometry-msgs, ros-indigo-message-filters, ros-indigo-message-generation, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-std-msgs
+Homepage: http://ros.org/wiki/posedetection_msgs
+Standards-Version: 3.9.2
+
+Package: ros-indigo-posedetection-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-cv-bridge, ros-indigo-geometry-msgs, ros-indigo-message-filters, ros-indigo-message-runtime, ros-indigo-roscpp, ros-indigo-sensor-msgs, ros-indigo-std-msgs
+Description: posedetection_msgs provides messages and services to facilitate passing pose detection results and features.
