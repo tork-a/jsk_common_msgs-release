@@ -1,3 +1,32 @@
+## jsk_common_msgs (lunar) - 4.3.1-0
+
+The packages in the `jsk_common_msgs` repository were released into the `lunar` distro by running `/usr/bin/bloom-release -y --rosdistro lunar --track lunar jsk_common_msgs` on `Wed, 08 Nov 2017 14:23:18 -0000`
+
+These packages were released:
+- `jsk_common_msgs`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `posedetection_msgs`
+- `speech_recognition_msgs`
+
+Version of package(s) in repository `jsk_common_msgs`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common_msgs
+- release repository: https://github.com/tork-a/jsk_common_msgs-release.git
+- rosdistro version: `4.2.0-0`
+- old version: `4.2.0-0`
+- new version: `4.3.1-0`
+
+Versions of tools used:
+
+- bloom version: `0.5.26`
+- catkin_pkg version: `0.3.6`
+- rosdep version: `0.11.8`
+- rosdistro version: `0.6.2`
+- vcstools version: `0.1.39`
+
+
 ## jsk_common_msgs (kinetic) - 4.3.1-0
 
 The packages in the `jsk_common_msgs` repository were released into the `kinetic` distro by running `/usr/bin/bloom-release -y --rosdistro kinetic --track kinetic jsk_common_msgs` on `Wed, 08 Nov 2017 14:10:08 -0000`
