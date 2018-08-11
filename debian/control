@@ -1,0 +1,12 @@
+Source: ros-melodic-jsk-common-msgs
+Section: misc
+Priority: extra
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-catkin
+Homepage: http://ros.org/wiki/jsk_common_msgs
+Standards-Version: 3.9.2
+
+Package: ros-melodic-jsk-common-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-jsk-footstep-msgs, ros-melodic-jsk-gui-msgs, ros-melodic-jsk-hark-msgs, ros-melodic-posedetection-msgs, ros-melodic-speech-recognition-msgs
+Description: Metapackage that contains commonly used messages for jsk-ros-pkg
