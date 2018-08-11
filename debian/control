@@ -1,0 +1,12 @@
+Source: ros-melodic-jsk-footstep-msgs
+Section: misc
+Priority: extra
+Maintainer: Ryohei Ueda <ueda@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-melodic-actionlib-msgs, ros-melodic-catkin, ros-melodic-geometry-msgs, ros-melodic-message-generation
+Homepage: http://ros.org/wiki/jsk_footstep_msgs
+Standards-Version: 3.9.2
+
+Package: ros-melodic-jsk-footstep-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-melodic-actionlib-msgs, ros-melodic-geometry-msgs, ros-melodic-message-runtime
+Description: jsk_footstep_msgs
