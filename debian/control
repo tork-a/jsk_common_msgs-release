@@ -1,0 +1,12 @@
+Source: ros-noetic-jsk-common-msgs
+Section: misc
+Priority: optional
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-noetic-catkin
+Homepage: http://ros.org/wiki/jsk_common_msgs
+Standards-Version: 3.9.2
+
+Package: ros-noetic-jsk-common-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-noetic-jsk-footstep-msgs, ros-noetic-jsk-gui-msgs, ros-noetic-jsk-hark-msgs, ros-noetic-posedetection-msgs, ros-noetic-speech-recognition-msgs
+Description: Metapackage that contains commonly used messages for jsk-ros-pkg
