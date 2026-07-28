@@ -1,0 +1,12 @@
+Source: ros-rolling-jsk-common-msgs
+Section: misc
+Priority: optional
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-ros-environment, ros-rolling-ros-workspace
+Homepage: http://ros.org/wiki/jsk_common_msgs
+Standards-Version: 3.9.2
+
+Package: ros-rolling-jsk-common-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-jsk-footstep-msgs, ros-rolling-jsk-gui-msgs, ros-rolling-jsk-hark-msgs, ros-rolling-posedetection-msgs, ros-rolling-speech-recognition-msgs, ros-rolling-ros-workspace
+Description: Metapackage that contains commonly used messages for jsk-ros-pkg
