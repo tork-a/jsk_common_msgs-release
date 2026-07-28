@@ -1,0 +1,12 @@
+Source: ros-lyrical-jsk-gui-msgs
+Section: misc
+Priority: optional
+Maintainer: KazutoMurase <murase@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-lyrical-ament-lint-auto <!nocheck>, ros-lyrical-ament-lint-common <!nocheck>, ros-lyrical-rosidl-default-generators, ros-one-ament-cmake, ros-one-geometry-msgs, ros-one-ros-environment, ros-one-sensor-msgs, ros-one-std-msgs, ros-lyrical-ros-workspace, ros-lyrical-rosidl-typesupport-fastrtps-c, ros-lyrical-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-lyrical-jsk-gui-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-lyrical-rosidl-default-runtime, ros-one-geometry-msgs, ros-one-sensor-msgs, ros-one-std-msgs, ros-lyrical-ros-workspace
+Description: jsk_gui_msgs
