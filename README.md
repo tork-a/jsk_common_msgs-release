@@ -1,3 +1,32 @@
+## jsk_common_msgs (lyrical) - 5.0.1-2
+
+The packages in the `jsk_common_msgs` repository were released into the `lyrical` distro by running `/tmp/claude-1001/-home-k-okada-catkin-ws-ws-jsk-common-msgs/6070a28b-6e5b-4da1-9ce9-ec16e7eb9ce7/scratchpad/bloom-venv/bin/bloom-release jsk_common_msgs --ros-distro lyrical --track lyrical --no-web` on `Tue, 28 Jul 2026 11:39:07 -0000`
+
+These packages were released:
+- `jsk_common_msgs`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `posedetection_msgs`
+- `speech_recognition_msgs`
+
+Version of package(s) in repository `jsk_common_msgs`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common_msgs
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `5.0.1-1`
+- new version: `5.0.1-2`
+
+Versions of tools used:
+
+- bloom version: `0.14.3`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common_msgs (kilted) - 5.0.1-2
 
 The packages in the `jsk_common_msgs` repository were released into the `kilted` distro by running `/tmp/claude-1001/-home-k-okada-catkin-ws-ws-jsk-common-msgs/6070a28b-6e5b-4da1-9ce9-ec16e7eb9ce7/scratchpad/bloom-venv/bin/bloom-release jsk_common_msgs --ros-distro kilted --track kilted --no-web` on `Tue, 28 Jul 2026 11:37:01 -0000`
