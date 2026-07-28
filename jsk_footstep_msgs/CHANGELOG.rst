@@ -2,6 +2,20 @@
 Changelog for package jsk_footstep_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+5.0.1 (2026-07-28)
+------------------
+* Make actionlib_msgs a ROS1-only dependency; ROS2 actions don't need it
+* Contributors: Kei Okada
+
+5.0.0 (2026-07-28)
+------------------
+* Add ROS2 (ament_cmake) support alongside ROS1 (catkin), building from the
+  same source tree (`#35 <https://github.com/jsk-ros-pkg/jsk_common_msgs/issues/35>`_). The 'duration' field type differs between ROS1
+  (duration) and ROS2 (builtin_interfaces/Duration), so PlanFootsteps.action
+  and Footstep.msg are rendered from .in templates at configure time
+* Simplify the ROS2 CMake using rosidl_auto_generate_interfaces()
+* Contributors: Daisuke Nishimatsu, Kei Okada
+
 4.3.2 (2020-05-03)
 ------------------
 
