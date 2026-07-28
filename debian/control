@@ -1,0 +1,12 @@
+Source: ros-rolling-jsk-gui-msgs
+Section: misc
+Priority: optional
+Maintainer: KazutoMurase <murase@jsk.imi.i.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-rolling-ament-cmake, ros-rolling-ament-lint-auto <!nocheck>, ros-rolling-ament-lint-common <!nocheck>, ros-rolling-geometry-msgs, ros-rolling-ros-environment, ros-rolling-rosidl-default-generators, ros-rolling-sensor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace, ros-rolling-rosidl-typesupport-fastrtps-c, ros-rolling-rosidl-typesupport-fastrtps-cpp
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-jsk-gui-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-geometry-msgs, ros-rolling-rosidl-default-runtime, ros-rolling-sensor-msgs, ros-rolling-std-msgs, ros-rolling-ros-workspace
+Description: jsk_gui_msgs
