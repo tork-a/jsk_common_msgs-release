@@ -1,0 +1,12 @@
+Source: ros-kilted-posedetection-msgs
+Section: misc
+Priority: optional
+Maintainer: Kei Okada <k-okada@jsk.t.u-tokyo.ac.jp>
+Build-Depends: debhelper (>= 9.0.0), ros-kilted-ament-lint-auto <!nocheck>, ros-kilted-ament-lint-common <!nocheck>, ros-kilted-rclcpp, ros-kilted-rosidl-default-generators, ros-one-ament-cmake, ros-one-cv-bridge, ros-one-geometry-msgs, ros-one-message-filters, ros-one-ros-environment, ros-one-sensor-msgs, ros-one-std-msgs, ros-kilted-ros-workspace, ros-kilted-rosidl-typesupport-fastrtps-c, ros-kilted-rosidl-typesupport-fastrtps-cpp
+Homepage: http://ros.org/wiki/posedetection_msgs
+Standards-Version: 3.9.2
+
+Package: ros-kilted-posedetection-msgs
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-kilted-rclcpp, ros-kilted-rosidl-default-runtime, ros-one-cv-bridge, ros-one-geometry-msgs, ros-one-message-filters, ros-one-sensor-msgs, ros-one-std-msgs, ros-kilted-ros-workspace
+Description: posedetection_msgs provides messages and services to facilitate passing pose detection results and features.
