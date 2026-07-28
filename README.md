@@ -1,3 +1,32 @@
+## jsk_common_msgs (jazzy) - 5.0.1-1
+
+The packages in the `jsk_common_msgs` repository were released into the `jazzy` distro by running `/home/k-okada/.local/bin/bloom-release jsk_common_msgs --ros-distro jazzy --new-track --no-web` on `Tue, 28 Jul 2026 02:49:06 -0000`
+
+These packages were released:
+- `jsk_common_msgs`
+- `jsk_footstep_msgs`
+- `jsk_gui_msgs`
+- `jsk_hark_msgs`
+- `posedetection_msgs`
+- `speech_recognition_msgs`
+
+Version of package(s) in repository `jsk_common_msgs`:
+
+- upstream repository: https://github.com/jsk-ros-pkg/jsk_common_msgs
+- release repository: unknown
+- rosdistro version: `null`
+- old version: `null`
+- new version: `5.0.1-1`
+
+Versions of tools used:
+
+- bloom version: `0.13.0`
+- catkin_pkg version: `1.1.0`
+- rosdep version: `0.26.0`
+- rosdistro version: `1.0.1`
+- vcstools version: `0.1.42`
+
+
 ## jsk_common_msgs (rolling) - 5.0.1-2
 
 The packages in the `jsk_common_msgs` repository were released into the `rolling` distro by running `/home/k-okada/.local/bin/bloom-release jsk_common_msgs --ros-distro rolling --new-track --no-web` on `Tue, 28 Jul 2026 02:28:35 -0000`
